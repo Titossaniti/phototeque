@@ -50,12 +50,29 @@ async function addImage(description, url) {
     }
 }
 
+//POST button event
+const form = document.querySelector('form');
 
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault(); // Empêcher le formulaire de se soumettre normalement
+
+        const inputURL = document.getElementById('inputURL').value;
+        const inputDesc = document.getElementById('inputDesc').value;
+
+        // Appeler la fonction addImage avec les valeurs des champs d'entrée
+        await addImage(inputDesc, inputURL);
+    });
+
+ // Afficher le nombre d'image qu'il y a
+    const header = document.querySelector('header');
+    const imageCount = document.createElement('p');
+    imageCount.textContent = `Il y a xxx images.`;
+    header.appendChild(imageCount);
 
  // Afficher la liste des images
- async function displayItem() {
- const imgListElement = document.getElementById('imgLibrary');
- const images = await fetchAPI();
+     async function displayItem() {
+     const imgListElement = document.getElementById('imgLibrary');
+     const images = await fetchAPI();
 
  // Boucle à travers chaque image et crée une card pour chacune
  images.forEach(img => {
@@ -129,8 +146,3 @@ async function addImage(description, url) {
  });
  }
  displayItem();
-
-
-
-
-
