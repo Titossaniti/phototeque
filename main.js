@@ -1,5 +1,5 @@
 // GET images
-const imageAPILink = 'http://localhost:3000/photos';
+const imageAPILink = 'https://photos-api-sepia.vercel.app/photos';
 
 async function fetchAPI() {
     try {
