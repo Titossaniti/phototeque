@@ -1,5 +1,5 @@
 // GET images
-const imageAPILink = 'https://photos-api-sepia.vercel.app/photos';
+const imageAPILink = 'http://localhost:3000/photos';
 
 async function fetchAPI() {
  try {
@@ -167,8 +167,37 @@ const form = document.querySelector('form');
 
      // Ajouter l'evenement pour mettre à jour une description
      updateButton.addEventListener('click', async () => {
-         await updateDesc(img.id)
+         document.getElementById('updateTextarea').value = img.description;
+         document.getElementById('saveUpdateButton').dataset.imageId = img.id;
+
+         // Afficher le modal
+         const updateModal = new bootstrap.Modal(document.getElementById('updateModal'));
+         updateModal.show();
      });
+
+     // Evenement pour le bouton "enregistrer les modifiications"
+     document.getElementById('saveUpdateButton').addEventListener('click', async () => {
+         const newDescription = document.getElementById('updateTextarea').value;
+         const imageId = document.getElementById('saveUpdateButton').dataset.imageId;
+
+         const updatedImage = await updateDesc(imageId, newDescription);
+
+         if (updatedImage) {
+             const imgCard = document.querySelector(`[data-image-id='${imageId}'] .descBody p`);
+             if (imgCard) {
+                 imgCard.textContent = updatedImage.description;
+                // cacher le modal
+                 const updateModal = bootstrap.Modal.getInstance(document.getElementById('updateModal'));
+                 updateModal.hide();
+
+             }
+         }
+
+     });
+     listItem.dataset.imageId = img.id;
+
+
+
 
      //Créé un bouton DELETE
          const deleteButton = document.createElement('button');
