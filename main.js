@@ -50,6 +50,41 @@ async function addImage(description, url) {
     }
 }
 
+// PUT description pour mettre à jour
+async function updateDesc(id, description) {
+    try {
+        // Récupère l'objet actuel depuis l'API
+        const response = await fetch(`${imageAPILink}/${id}`);
+        if (!response.ok) throw new Error(`Erreur lors de la récupération de l'image: HTTP error! Status: ${response.status}`);
+
+        const currentData = await response.json();
+
+        // Crée un nouvel objet avec la description mise à jour
+        const updatedData = {
+            ...currentData,
+            description: description
+        };
+
+        // Envoie la requête PUT avec les données mises à jour
+        const responsePut = await fetch(`${imageAPILink}/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedData)
+        });
+
+        if (!responsePut.ok) throw new Error(`Erreur dans la requête HTTP ! statut : ${responsePut.status}`);
+
+        const result = await responsePut.json();
+        console.log('Description mise à jour avec succès:', result);
+        return result;
+    } catch (error) {
+        console.error('Erreur lors de la mise à jour de la description:', error);
+    }
+}
+
+
 //POST button event
 const form = document.querySelector('form');
 
@@ -63,11 +98,14 @@ const form = document.querySelector('form');
         await addImage(inputDesc, inputURL);
     });
 
+
+/*
  // Afficher le nombre d'image qu'il y a
     const header = document.querySelector('header');
     const imageCount = document.createElement('p');
     imageCount.textContent = `Il y a xxx images.`;
     header.appendChild(imageCount);
+**/
 
  // Afficher la liste des images
      async function displayItem() {
@@ -127,6 +165,11 @@ const form = document.querySelector('form');
      //Ajoute un bouton UPDATE à chaque image
          buttonBody.appendChild(updateButton);
 
+     // Ajouter l'evenement pour mettre à jour une description
+     updateButton.addEventListener('click', async () => {
+         await updateDesc(img.id)
+     });
+
      //Créé un bouton DELETE
          const deleteButton = document.createElement('button');
          deleteButton.setAttribute('type', `button`);
@@ -145,4 +188,4 @@ const form = document.querySelector('form');
 
  });
  }
- displayItem();
+displayItem();
