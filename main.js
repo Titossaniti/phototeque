@@ -187,10 +187,8 @@ async function displayItem() {
                         // cacher le modal
                         const updateModal = bootstrap.Modal.getInstance(document.getElementById('updateModal'));
                         updateModal.hide();
-
                     }
                 }
-
             });
             listItem.dataset.imageId = img.id;
 
