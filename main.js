@@ -101,7 +101,6 @@ form.addEventListener('submit', async (event) => {
 const searchInput = document.getElementById('searchInput');
 searchInput.addEventListener('input', displayItem);
 
-
 // Afficher la liste des images
 async function displayItem() {
     // Obtenir le texte de recherche en minuscules
