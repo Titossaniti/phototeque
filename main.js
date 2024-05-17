@@ -114,7 +114,7 @@ async function displayItem() {
         if (img.description.toLowerCase().includes(searchText)) {
             //Créé la DIV parente
             const listItem = document.createElement('div');
-            listItem.classList.add('col', 'cardBlock');
+            listItem.classList.add('col', 'cardBlock', 'col-sm-12','col-md-6','col-lg-4' ,'col-xl-3');
             imgListElement.appendChild(listItem);
 
             // Créé une div enfant
