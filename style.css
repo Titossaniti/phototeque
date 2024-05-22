@@ -1,5 +1,37 @@
+:root{
+    --dark-mode-color : #121212;
+    --dark-card-color : rgba(18, 18, 18, 0.8);
+    --dark-input : rgba(18, 18, 18, 0.2);
+    --dark-mode-border : #763295;
+}
+
+
+
+/* darkmode test */
+*{
+    color: white;
+}
+.dark-background{
+     background-color: var(--dark-mode-color);
+ }
+.dark-border{
+    border: solid 3px var(--dark-mode-border);
+}
+input{
+    background-color: var(--dark-input) !important;
+    border-color: #763295 !important;
+    color: white !important;
+}
+input::placeholder {
+    color: white !important;
+}
+/**/
+
+
+
 body{
     padding: 0 5%;
+
 }
 header{
     height: 15vh;
@@ -14,4 +46,13 @@ header{
 }
 .marginFormInput{
     margin-top: 20px;
+}
+.descBody{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: calc(1.2em * 3);
+    line-height: 1.2em;
 }

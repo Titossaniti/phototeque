@@ -119,7 +119,7 @@ async function displayItem() {
 
             // Créé une div enfant
             const contentBody = document.createElement('div');
-            contentBody.classList.add('card', 'contentBody' ,'shadow');
+            contentBody.classList.add('card', 'contentBody' ,'shadow' , 'dark-background', 'dark-border');
 
             // Ajoute la div enfant à la div listItem
             listItem.appendChild(contentBody);
