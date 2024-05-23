@@ -114,3 +114,7 @@ header{
     height: calc(1.2em * 3);
     line-height: 1.2em;
 }
+a{
+    color: white;
+    text-decoration: none;
+}
