@@ -6,7 +6,7 @@ async function fetchAPI() {
         const response = await fetch(imageAPILink);
         if (!response.ok) new Error(`Erreur de lecture de l'API: HTTP error! Status: ${response.status}`);
         // Lance une erreur si la réponse est échouée
-        const data = await response.json();
+        const data = response.json();
         return data;
     } catch (error) {
         console.error('Erreur lors de la récupération des données:', error);
