@@ -12,11 +12,15 @@
 </head>
 <body class="dark-background">
     <header>
-        <h1 class="display-1 text-center">Application De Gestion De Photos</h1>
+            <h1 class="display-1 text-center page-title">Application De Gestion De Photos</h1>
+            <button id="theme-switch" class="btn btn-primary dark-switch">
+                <i id="theme-icon" class="fas fa-sun"></i>
+            </button>
     </header>
     <main>
         <div class="my-5">
-            <input type="search" id="searchInput" class="form-control" placeholder="Rechercher une image" aria-label="Search" />
+            <input type="search" id="searchInput" class="form-control dark-input" placeholder="Rechercher une image"
+                   aria-label="Search" />
         </div>
         <div>
             <div class="col cardBlock">
@@ -25,12 +29,15 @@
                         <form>
                             <h2 class="text-start mb-4">Ajoutez Une Photo !</h2>
                             <div class="mb-4">
-                                <input class="form-control" id="inputURL" name="inputURL" placeholder="Ajoutez l'URL de votre image">
+                                <input class="form-control dark-input" id="inputURL" name="inputURL"
+                                       placeholder="Ajoutez l'URL de votre image">
                             </div>
                             <div class="mb-4">
-                                <input class="form-control" id="inputDesc" name="inputDesc" placeholder="Ajoutez votre description">
+                                <input class="form-control dark-input" id="inputDesc" name="inputDesc"
+                                       placeholder="Ajoutez votre description">
                             </div>
-                            <button type="submit" class="btn btn-primary" id="btnAddImg"><span class="me-2"><i class="fa-solid fa-camera"></i></span>Ajouter l'image</button>
+                            <button type="submit" class="btn btn-primary dark-switch" id="btnAddImg"><span
+                                    class="me-2"><i class="fa-solid fa-camera"></i></span>Ajouter l'image</button>
                         </form>
                     </div>
                 </div>
@@ -42,14 +49,14 @@
         <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content dark-background dark-border">
-                    <div class="modal-header">
+                    <div class="modal-header dark-modal-header">
                         <h5 class="modal-title" id="updateModalLabel">Mettre à jour la description</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <textarea class="form-control" id="updateTextarea" rows="3"></textarea>
+                        <textarea class="form-control dark-textarea" id="updateTextarea" rows="3"></textarea>
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer dark-modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                         <button type="button" class="btn btn-primary" id="saveUpdateButton">Enregistrer les modifications</button>
                     </div>
@@ -58,8 +65,13 @@
         </div>
 
     </main>
-    <footer class="my-4">
-        Tristan Erard - 2024
+    <footer class="my-4 py-5 text-end dark-footer d-flex">
+        <div>
+            <a href="https://github.com/Titossaniti/phototeque" ><i class="fa-brands fa-square-github"></i></a>
+        </div>
+        <div>
+             - Tristan Erard - 2024
+        </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 <script src="main.js"></script>

@@ -17,17 +17,74 @@
 .dark-border{
     border: solid 3px var(--dark-mode-border);
 }
-input{
+.dark-input{
     background-color: var(--dark-input) !important;
-    border-color: #763295 !important;
+    border-color: var(--dark-mode-border) !important;
     color: white !important;
 }
 input::placeholder {
     color: white !important;
 }
+.dark-modal-header{
+    border-bottom: solid 1px var(--dark-mode-border);
+}
+.dark-modal-footer{
+    border-top: solid 1px var(--dark-mode-border);
+}
+.dark-textarea{
+    background-color: var(--dark-mode-color) !important;
+    border-color: var(--dark-mode-border);
+    color: white;
+}
+.dark-textarea:focus{
+    color: white;
+}
+.dark-footer{
+    border-top: solid 2px var(--dark-mode-border);
+}
+.dark-switch{
+    background-color: var(--dark-mode-border);
+    border-color: var(--dark-mode-border);
+}
+.dark-switch:hover{
+    background-color: #803ca1;
+    border-color: var(--dark-mode-border);
+}
 /**/
+.fa-square-github{
+    font-size: 1.3rem;
+    margin-right: .5rem;
+}
 
-
+#theme-switch{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 10px;
+}
+@media (min-width: 1024px) {
+    #theme-switch{
+        top: 10px;
+    }
+}
+@media (min-width: 531px) and (max-width: 1023px) {
+    #theme-switch{
+        top: 100px;
+    }
+}
+@media (max-width: 530px) {
+    #theme-switch{
+        top: 130px;
+    }
+}
+@media (max-width: 425px) {
+    .page-title{
+        font-size: 2rem;
+    }
+    #theme-switch{
+        top: 100px;
+    }
+}
 
 body{
     padding: 0 5%;
@@ -36,6 +93,7 @@ body{
 header{
     height: 15vh;
     margin: 40px 0;
+    position: relative;
 }
 #imgLibrary{
     padding-bottom: 40px;

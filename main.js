@@ -7,7 +7,6 @@ async function fetchAPI() {
         if (!response.ok) new Error(`Erreur de lecture de l'API: HTTP error! Status: ${response.status}`);
         // Lance une erreur si la réponse est échouée
         const data = await response.json();
-        console.log(data);
         return data;
     } catch (error) {
         console.error('Erreur lors de la récupération des données:', error);
@@ -37,7 +36,7 @@ async function addImage(description, url) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ description, url })
+            body: JSON.stringify({description, url})
         });
         if (!response.ok) throw new Error(`Erreur d'ajout de l'image: HTTP error! Status: ${response.status}`);
         // Lance une erreur si la réponse est échouée
@@ -114,12 +113,12 @@ async function displayItem() {
         if (img.description.toLowerCase().includes(searchText)) {
             //Créé la DIV parente
             const listItem = document.createElement('div');
-            listItem.classList.add('col', 'cardBlock', 'col-sm-12','col-md-6','col-lg-4' ,'col-xl-3');
+            listItem.classList.add('col', 'cardBlock', 'col-sm-12', 'col-md-6', 'col-lg-4', 'col-xl-3');
             imgListElement.appendChild(listItem);
 
             // Créé une div enfant
             const contentBody = document.createElement('div');
-            contentBody.classList.add('card', 'contentBody' ,'shadow' , 'dark-background', 'dark-border');
+            contentBody.classList.add('card', 'contentBody', 'shadow', 'dark-background', 'dark-border');
 
             // Ajoute la div enfant à la div listItem
             listItem.appendChild(contentBody);
@@ -211,4 +210,23 @@ async function displayItem() {
 
     });
 }
+
 displayItem();
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+    const switchButton = document.getElementById('theme-switch');
+    const themeIcon = document.getElementById('theme-icon');
+
+    switchButton.addEventListener('click', function () {
+    document.body.classList.toggle('dark-mode');
+
+    if (document.body.classList.contains('dark-mode')) {
+    themeIcon.classList.remove('fa-sun');
+    themeIcon.classList.add('fa-moon');
+} else {
+    themeIcon.classList.remove('fa-moon');
+    themeIcon.classList.add('fa-sun');
+}
+});
+});
