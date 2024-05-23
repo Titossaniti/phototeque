@@ -20,7 +20,7 @@ async function deleteImage(id) {
         const response = await fetch(`${imageAPILink}/${id}`, {
             method: 'DELETE'
         });
-        if (!response.ok) throw new Error(`Erreur de suppression de l'image: HTTP error! Status: ${response.status}`);
+        if (!response.ok) new Error(`Erreur de suppression de l'image: HTTP error! Status: ${response.status}`);
         // Lance une erreur si la réponse est échouée
         console.log(`Image avec l'ID ${id} supprimée avec succès.`);
     } catch (error) {
@@ -38,7 +38,7 @@ async function addImage(description, url) {
             },
             body: JSON.stringify({description, url})
         });
-        if (!response.ok) throw new Error(`Erreur d'ajout de l'image: HTTP error! Status: ${response.status}`);
+        if (!response.ok) new Error(`Erreur d'ajout de l'image: HTTP error! Status: ${response.status}`);
         // Lance une erreur si la réponse est échouée
         const newImage = await response.json();
         console.log('Image ajoutée avec succès:', newImage);
@@ -54,7 +54,7 @@ async function updateDesc(id, description) {
     try {
         // Récupère l'objet actuel depuis l'API
         const response = await fetch(`${imageAPILink}/${id}`);
-        if (!response.ok) throw new Error(`Erreur lors de la récupération de l'image: HTTP error! Status: ${response.status}`);
+        if (!response.ok) new Error(`Erreur lors de la récupération de l'image: HTTP error! Status: ${response.status}`);
 
         const currentData = await response.json();
 
@@ -73,7 +73,7 @@ async function updateDesc(id, description) {
             body: JSON.stringify(updatedData)
         });
 
-        if (!responsePut.ok) throw new Error(`Erreur dans la requête HTTP ! statut : ${responsePut.status}`);
+        if (!responsePut.ok) new Error(`Erreur dans la requête HTTP ! statut : ${responsePut.status}`);
 
         const result = await responsePut.json();
         console.log('Description mise à jour avec succès:', result);
@@ -118,12 +118,12 @@ async function displayItem() {
 
             // Créé une div enfant
             const contentBody = document.createElement('div');
-            contentBody.classList.add('card', 'contentBody', 'shadow', 'dark-background', 'dark-border');
+            contentBody.classList.add('card', 'contentBody', 'shadow', 'switch-background', 'switch-border');
 
             // Ajoute la div enfant à la div listItem
             listItem.appendChild(contentBody);
 
-            // Créé un p enfant DEVRA ETRE UN IMG
+            // Créé un img enfant
             const imgTag = document.createElement('img');
             imgTag.classList.add('card-img-top', 'imgBody');
             imgTag.setAttribute('src', `${img.url}`);
@@ -133,7 +133,7 @@ async function displayItem() {
 
             // Créé une div enfant
             const descBody = document.createElement('div');
-            descBody.classList.add('card-body', 'descBody');
+            descBody.classList.add('card-body', 'descBody','switch-text');
 
             // Ajoute la div enfant à la div contentBody
             contentBody.appendChild(descBody);
@@ -211,9 +211,6 @@ async function displayItem() {
     });
 }
 
-displayItem();
-
-
     document.addEventListener('DOMContentLoaded', function () {
     const switchButton = document.getElementById('theme-switch');
     const themeIcon = document.getElementById('theme-icon');
@@ -230,3 +227,26 @@ displayItem();
 }
 });
 });
+document.getElementById('theme-switch').addEventListener('click', function() {
+    const elements = [
+        'switch-background', 'switch-text', 'switch-addbtn',
+        'switch-input', 'switch-border', 'switch-modal-header',
+        'switch-textarea', 'switch-modal-footer', 'switch-footer',
+        'switch-link','switch-theme-btn'
+    ];
+
+    elements.forEach(element => {
+        const elems = document.querySelectorAll(`.${element}, .${element.replace('switch', 'dark')}`);
+
+        elems.forEach(el => {
+            if (el.classList.contains(element)) {
+                el.classList.remove(element);
+                el.classList.add(element.replace('switch', 'dark'));
+            } else if (el.classList.contains(element.replace('switch', 'dark'))) {
+                el.classList.remove(element.replace('switch', 'dark'));
+                el.classList.add(element);
+            }
+        });
+    });
+});
+displayItem();

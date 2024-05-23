@@ -8,9 +8,6 @@
 
 
 /* darkmode test */
-*{
-    color: white;
-}
 .dark-background{
      background-color: var(--dark-mode-color);
  }
@@ -22,7 +19,7 @@
     border-color: var(--dark-mode-border) !important;
     color: white !important;
 }
-input::placeholder {
+.dark-input::placeholder {
     color: white !important;
 }
 .dark-modal-header{
@@ -36,13 +33,13 @@ input::placeholder {
     border-color: var(--dark-mode-border);
     color: white;
 }
-.dark-textarea:focus{
+.dark-text, .dark-link, .dark-textarea:focus{
     color: white;
 }
 .dark-footer{
     border-top: solid 2px var(--dark-mode-border);
 }
-.dark-switch{
+.dark-addbtn{
     background-color: var(--dark-mode-border);
     border-color: var(--dark-mode-border);
 }
@@ -61,6 +58,10 @@ input::placeholder {
     height: 40px;
     position: absolute;
     right: 10px;
+}
+.switch-theme-btn:hover, .dark-theme-btn{
+    background-color: var(--dark-mode-border);
+    border-color: var(--dark-mode-border);
 }
 @media (min-width: 1024px) {
     #theme-switch{
@@ -115,6 +116,6 @@ header{
     line-height: 1.2em;
 }
 a{
-    color: white;
+    color: black;
     text-decoration: none;
 }
